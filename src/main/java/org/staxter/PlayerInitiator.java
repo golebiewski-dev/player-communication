@@ -13,6 +13,7 @@ public class PlayerInitiator extends Player {
     @Override
     public void receiveMessage(Message message) {
         playerLogger.log(Level.INFO, () -> this.getName() + " has received a message from " + message.getSender() + ": " + message.getContent());
+        counter++;
         if (this.shouldStop()) {
             mediator.unregisterPlayer(this);
         } else {
@@ -21,7 +22,6 @@ public class PlayerInitiator extends Player {
     }
 
     private boolean shouldStop() {
-        counter++;
         return counter == 10;
     }
 
